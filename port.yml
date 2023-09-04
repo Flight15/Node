@@ -3,3 +3,4 @@ title: Node
 blueprint: microservice
 properties:
   readme: file://./README.md
+  package: file://./package.json
