@@ -2,6 +2,3 @@ identifier: Node
 title: Node
 blueprint: microservice
 properties:
-  myStringProp: myValue
-  myNumberProp: 5
-  myUrl: https://example.com
