@@ -2,3 +2,4 @@ identifier: Node
 title: Node
 blueprint: microservice
 properties:
+  readme: file://./README.md
