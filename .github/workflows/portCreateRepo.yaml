@@ -11,9 +11,9 @@ on:
     secrets:
       ORG_ADMIN_TOKEN:
         required: true
-      PORT_CLIENT_ID:
+      CLIENT_ID:
         required: true
-      PORT_CLIENT_SECRET:
+      CLIENT_SECRET:
         required: true
 jobs:
   scaffold-service:
@@ -24,8 +24,8 @@ jobs:
       - uses: port-labs/cookiecutter-gha@v1
         id: scaff
         with:
-          portClientId: ${{ secrets.PORT_CLIENT_ID }}
-          portClientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
+          portClientId: ${{ secrets.CLIENT_ID }}
+          portClientSecret: ${{ secrets.CLIENT_SECRET }}
           token: ${{ secrets.ORG_ADMIN_TOKEN }}
           portRunId: ${{ fromJson(inputs.port_payload).context.runId }}
           repositoryName: ${{ fromJson(inputs.port_payload).payload.properties.service_name }}
