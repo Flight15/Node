@@ -7,7 +7,7 @@ on:
         description: "Port's payload, including details for who triggered the action and general context (blueprint, run id, etc...)"
         type: string
 jobs:
-  get-eks-properties:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Get EKS properties         
@@ -31,3 +31,4 @@ jobs:
                     "value": "Node"
                 }
             ]}
+          ECHO: "${{ fromJson(steps.test.outputs.entities)[0] }}"
