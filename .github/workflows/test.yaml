@@ -1,37 +1,40 @@
-name: testing search
-on:
-  workflow_dispatch:
-    inputs:
-      port_payload:
-        required: true
-        description: "Port's payload, including details for who triggered the action and general context (blueprint, run id, etc...)"
-        type: string
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: test     
-        uses: port-labs/port-github-action@v1
-        with:
-          clientId: ${{ secrets.PORT_CLIENT_ID }}
-          clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
-          operation: SEARCH
-          query: |
-            {
-            "combinator": "and",
-            "rules": [
-                {
-                    "property": "$blueprint",
-                    "operator": "=",
-                    "value": "service"
-                },
-                {
-                    "property": "$identifier",
-                    "operator": "=",
-                    "value": "Node"
-                }
-            ]}
-  print:
-    runs-on: ubuntu-latest
-    steps:
-          ECHO: "${{ fromJson(steps.test.outputs.entity) }}"
+  name: testing search
+  on:
+    workflow_dispatch:
+      inputs:
+        port_payload:
+          required: true
+          description: "Port's payload, including details for who triggered the action and general context (blueprint, run id, etc...)"
+          type: string
+  jobs:
+    test:
+      runs-on: ubuntu-latest
+      steps:
+        - name: test     
+          uses: port-labs/port-github-action@v1
+          with:
+            clientId: ${{ secrets.PORT_CLIENT_ID }}
+            clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
+            operation: SEARCH
+            query: |
+              {
+              "combinator": "and",
+              "rules": [
+                  {
+                      "property": "$blueprint",
+                      "operator": "=",
+                      "value": "service"
+                  },
+                  {
+                      "property": "$identifier",
+                      "operator": "=",
+                      "value": "Node"
+                  }
+              ]}
+    print-output:
+      needs: test
+      runs-on: ubuntu-latest
+      steps:
+        - name: print output
+          run: echo "${{ steps.test.outputs.entity }}"
+    
