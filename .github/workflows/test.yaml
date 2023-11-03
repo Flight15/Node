@@ -36,5 +36,5 @@
       runs-on: ubuntu-latest
       steps:
         - name: print output
-          run: echo "${{ steps.test.outputs.entities }}"
+          run: echo "${{ needs.test.outputs.entities }}"
     
