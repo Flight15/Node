@@ -7,12 +7,12 @@
           description: "Port's payload, including details for who triggered the action and general context (blueprint, run id, etc...)"
           type: string
   jobs:
-    test:
+    search-entity:
       runs-on: ubuntu-latest
       outputs:
-        entities: ${{ steps.step1.outputs.entities }}
+        entities: ${{ steps.test-action.outputs.entities }}
       steps:
-        - name: test1     
+        - id: test-action 
           uses: port-labs/port-github-action@v1
           with:
             clientId: ${{ secrets.PORT_CLIENT_ID }}
@@ -34,9 +34,9 @@
                   }
               ]}
     print-output:
-      needs: test
+      needs: search-entity
       runs-on: ubuntu-latest
       steps:
         - name: print output
-          run: echo "${{ needs.test.outputs.entities }}"
+          run: echo '${{ needs.search-entity.outputs.entities }}'
     
