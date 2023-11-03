@@ -1,27 +1,30 @@
-name: testing search
+name: test
 on:
-    workflow_dispatch:
-    
+  workflow_dispatch:
+    inputs:
+      port_payload:
+        required: true
+        description: "Port's payload, including details for who triggered the action and general context (blueprint, run id, etc...)"
+        type: string
 jobs:
-    - name: Get EKS properties
-    - uses: port-labs/port-github-action@v1
-      with:
+  - name: Get EKS properties         
+    uses: port-labs/port-github-action@v1
+    with:
         clientId: ${{ secrets.PORT_CLIENT_ID }}
-        clientSecret: ${{ secrets.PORT_CLIENT_SECRET }
+        clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
         operation: SEARCH
         query: |
-             {
-                "combinator": "and",
-                "rules": [
-                {
-                    "property": "$blueprint",
-                    "operator": "=",
-                    "value": "service"
-                 },
-                 {
-                    "property": "$identifier",
-                     "operator": "=",
-                     "value": "ttest1323"
-                  }
-               ]
-            }
+          {
+          "combinator": "and",
+          "rules": [
+              {
+                  "property": "$blueprint",
+                  "operator": "=",
+                  "value": "service"
+              },
+              {
+                  "property": "$identifier",
+                  "operator": "=",
+                  "value": "Node"
+              }
+          ]}
