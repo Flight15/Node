@@ -31,4 +31,4 @@ jobs:
                     "value": "Node"
                 }
             ]}
-          ECHO: "${{ fromJson(steps.test.outputs.entities)[0] }}"
+          ECHO: "${{ fromJson(steps.test.outputs.entity) }}"
