@@ -1,4 +1,3 @@
-
 name: Scaffold a new service
 on:
   workflow_dispatch:
@@ -9,10 +8,9 @@ on:
         type: string
 jobs:
       search_api:
-      name: Get EKS properties
-         id: eks
-         uses: port-labs/port-github-action@v1
-         with:
+        name: Get EKS properties
+        uses: port-labs/port-github-action@v1
+        with:
            clientId: ${{ secrets.PORT_CLIENT_ID }}
            clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
            operation: SEARCH
@@ -31,4 +29,4 @@ jobs:
                        "value": "Node"
                    }
                ]
-            }
+            
