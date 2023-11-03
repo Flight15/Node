@@ -1,0 +1,23 @@
+# - name: Get EKS properties
+      #   id: eks
+      #   uses: port-labs/port-github-action@v1
+      #   with:
+      #     clientId: ${{ secrets.PORT_CLIENT_ID }}
+      #     clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
+      #     operation: SEARCH
+      #     query: |
+      #       {
+      #         "combinator": "and",
+      #         "rules": [
+      #             {
+      #                 "property": "$blueprint",
+      #                 "operator": "=",
+      #                 "value": "eks"
+      #             },
+      #             {
+      #                 "property": "$identifier",
+      #                 "operator": "=",
+      #                 "value": "${{ fromJson(inputs.port_payload).payload.properties.eks }}"
+      #             }
+      #         ]
+      #       }
