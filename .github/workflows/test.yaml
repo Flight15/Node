@@ -1,4 +1,4 @@
-name: test
+name: testing search
 on:
   workflow_dispatch:
     inputs:
@@ -8,9 +8,11 @@ on:
         type: string
 jobs:
   get-eks-properties:
-      name: Get EKS properties         
-      uses: port-labs/port-github-action@v1
-      with:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get EKS properties         
+        uses: port-labs/port-github-action@v1
+        with:
           clientId: ${{ secrets.PORT_CLIENT_ID }}
           clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
           operation: SEARCH
