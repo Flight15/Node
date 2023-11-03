@@ -1,11 +1,7 @@
 name: testing search
 on:
     workflow_dispatch:
-      inputs:
-        port_payload:
-          required: true
-          description: "Port's payload, including details for who triggered the action and general context (blueprint, run id, etc...)"
-          type: string
+    
 jobs:
     - name: Get EKS properties
     - uses: port-labs/port-github-action@v1
@@ -25,7 +21,7 @@ jobs:
                  {
                     "property": "$identifier",
                      "operator": "=",
-                     "value": "Node"
+                     "value": "ttest1323"
                   }
                ]
             }
