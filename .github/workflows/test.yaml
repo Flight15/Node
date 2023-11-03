@@ -1,4 +1,4 @@
-  name: testing search
+  name: test
   on:
     workflow_dispatch:
       inputs:
@@ -10,15 +10,15 @@
     test:
       runs-on: ubuntu-latest
       outputs:
-        entities: ${{ steps.port-github-action.outputs.entities }}
+        entities: ${{ steps.step1.outputs.entities }}
       steps:
-        - name: test     
+        - name: test1     
           uses: port-labs/port-github-action@v1
           with:
             clientId: ${{ secrets.PORT_CLIENT_ID }}
             clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
             operation: SEARCH
-            query: |
+            query: |-
               {
               "combinator": "and",
               "rules": [
