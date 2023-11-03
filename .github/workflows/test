@@ -1,23 +1,34 @@
-# - name: Get EKS properties
-      #   id: eks
-      #   uses: port-labs/port-github-action@v1
-      #   with:
-      #     clientId: ${{ secrets.PORT_CLIENT_ID }}
-      #     clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
-      #     operation: SEARCH
-      #     query: |
-      #       {
-      #         "combinator": "and",
-      #         "rules": [
-      #             {
-      #                 "property": "$blueprint",
-      #                 "operator": "=",
-      #                 "value": "eks"
-      #             },
-      #             {
-      #                 "property": "$identifier",
-      #                 "operator": "=",
-      #                 "value": "${{ fromJson(inputs.port_payload).payload.properties.eks }}"
-      #             }
-      #         ]
-      #       }
+
+name: Scaffold a new service
+on:
+  workflow_dispatch:
+    inputs:
+      port_payload:
+        required: true
+        description: "Port's payload, including details for who triggered the action and general context (blueprint, run id, etc...)"
+        type: string
+jobs:
+      search_api:
+      name: Get EKS properties
+         id: eks
+         uses: port-labs/port-github-action@v1
+         with:
+           clientId: ${{ secrets.PORT_CLIENT_ID }}
+           clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
+           operation: SEARCH
+           query: |
+             {
+               "combinator": "and",
+               "rules": [
+                   {
+                      "property": "$blueprint",
+                      "operator": "=",
+                       "value": "service"
+                   },
+                   {
+                       "property": "$identifier",
+                       "operator": "=",
+                       "value": "Node"
+                   }
+               ]
+            }
