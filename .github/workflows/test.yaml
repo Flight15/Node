@@ -31,4 +31,7 @@ jobs:
                     "value": "Node"
                 }
             ]}
+  print:
+    runs-on: ubuntu-latest
+    steps:
           ECHO: "${{ fromJson(steps.test.outputs.entity) }}"
