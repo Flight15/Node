@@ -9,6 +9,8 @@
   jobs:
     test:
       runs-on: ubuntu-latest
+      outputs:
+        entities: ${{ steps.port-github-action.outputs.entities }}
       steps:
         - name: test     
           uses: port-labs/port-github-action@v1
