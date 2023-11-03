@@ -17,15 +17,15 @@ jobs:
              {
                 "combinator": "and",
                 "rules": [
-            {
-                "property": "$blueprint",
-                "operator": "=",
-                "value": "service"
-             },
-             {
-                "property": "$identifier",
-                 "operator": "=",
-                 "value": "Node"
-              }
-             ]
+                {
+                    "property": "$blueprint",
+                    "operator": "=",
+                    "value": "service"
+                 },
+                 {
+                    "property": "$identifier",
+                     "operator": "=",
+                     "value": "Node"
+                  }
+               ]
             }
