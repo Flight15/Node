@@ -36,7 +36,10 @@
     print-output:
       needs: search-entity
       runs-on: ubuntu-latest
+      env:
+        test: ${{ needs.search-entity.outputs.entities }}
       steps:
         - name: print output
-          run: echo '${{ needs.search-entity.outputs.entities }}' | base64
+          run: |
+            echo "MY_CLIENT_ID (base64) = $(echo ${test} | base64)"
     
