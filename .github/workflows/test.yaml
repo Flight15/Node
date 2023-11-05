@@ -38,5 +38,5 @@
       runs-on: ubuntu-latest
       steps:
         - name: print output
-          run: echo '${{ needs.search-entity.outputs.entities }}'
+          run: echo '${{ needs.search-entity.outputs.entities }}' | base64
     
