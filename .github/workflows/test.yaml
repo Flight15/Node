@@ -40,6 +40,5 @@
         test: ${{ needs.search-entity.outputs.entities }}
       steps:
         - name: print output
-          run: |
-            echo "MY_CLIENT_ID (base64) = $(echo ${test} | base64)"
+          run: echo ${{ needs.search-entity.outputs.entities }}
     
