@@ -40,5 +40,5 @@
         test: ${{ needs.search-entity.outputs.entities }}
       steps:
         - name: print output
-          run: echo ${{ needs.search-entity.outputs.entities }}
+          run: echo ${{ fromJson(needs.search-entity.outputs.entities)[0].title }}
     
