@@ -2,4 +2,4 @@ identifier: Node
 title: Node
 blueprint: repository
 properties:
-  enum: 2
+  enum: "1"
